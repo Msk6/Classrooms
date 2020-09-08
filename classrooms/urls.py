@@ -20,8 +20,8 @@ urlpatterns = [
 
     path('classrooms/<int:classroom_id>/add/', views.add_student, name='student-create'),
 
-    path('classrooms/<int:student_id>/supdate/', views.student_update, name='student-update'),
-    path('classrooms/<int:student_id>/sdelete/', views.student_delete, name='student-delete'),
+    path('classrooms/<int:classroom_id>/<int:student_id>/supdate/', views.student_update, name='student-update'),
+    path('classrooms/<int:classroom_id>/<int:student_id>/sdelete/', views.student_delete, name='student-delete'),
 ]
 
 if settings.DEBUG:
