@@ -1,0 +1,32 @@
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Grade</th>
+        <th scope="col">DOB</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <hr>
+    <tbody>
+    {% for student in students %}
+      <tr>
+        <td>{{student.name}}</td>
+        <td>{{student.exam_grade}}</td>
+        <td>{{student.dob}}</td>
+        <td>{{student.gender}}</td>
+        <td>
+          <a href="{% url 'student-update' student.id %}" class="btn" style="background-color: #000034; color: white;">Update</a>
+          <a href="{% url 'student-delete' student.id %}" class="btn" style="background-color: #FFA500; color: #000034;">Delete</a>
+        </td>
+      </tr>
+      <tr>
+        {% endfor %}
+
+    </tbody>
+  </table>
+
+ 
+  
+  
