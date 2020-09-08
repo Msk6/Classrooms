@@ -17,6 +17,8 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('signup/', views.signup, name='signup'),
     path('signout/', views.signout, name='signout'),
+
+    path('classrooms/<int:classroom_id>/add/', views.add_student, name='student-create'),
 ]
 
 if settings.DEBUG:

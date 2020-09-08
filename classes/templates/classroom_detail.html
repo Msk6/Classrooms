@@ -10,6 +10,9 @@
     <p class="card-text" style="color: 000034;">{{classroom.year}}</p>
     <a href="{% url 'classroom-update' classroom.id %}" class="btn" style="background-color: #000034; color: white;">Update</a>
     <a href="{% url 'classroom-delete' classroom.id %}" class="btn" style="background-color: #FFA500; color: #000034;">Delete</a>
+    {% if classroom.teacher == request.user %}
+    <a href="{% url 'student-create' classroom.id %}" class="btn" style="background-color: #0c7a43; color: #000034;">Add student</a>
+    {% endif %}
   </div>
 </div>
 

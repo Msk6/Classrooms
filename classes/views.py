@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from .models import Classroom
-from .forms import ClassroomForm, SignupForm, SigninForm
+from .models import Classroom, Student
+from .forms import ClassroomForm, SignupForm, SigninForm, StudentForm
 from django.contrib.auth import login, authenticate, logout
 
 def signup(request):
@@ -103,5 +103,22 @@ def classroom_delete(request, classroom_id):
 	Classroom.objects.get(id=classroom_id).delete()
 	messages.success(request, "Successfully Deleted!")
 	return redirect('classroom-list')
+
+def add_student(request, classroom_id):
+	classroom_obj = Classroom.objects.get(id=classroom_id)
+	form = StudentForm()
+	if request.method == "POST":
+		form = StudentForm(request.POST)
+		if form.is_valid():
+			student = form.save(commit=False)
+			student.classroom = classroom_obj
+			student.save()
+			return redirect('classroom-detail', classroom_id)
+	context = {
+        "form":form,
+        "classroom": classroom_obj,
+    }
+	return render(request, 'add_student.html', context)
+
 
 
