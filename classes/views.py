@@ -106,7 +106,7 @@ def classroom_delete(request, classroom_id):
 	messages.success(request, "Successfully Deleted!")
 	return redirect('classroom-list')
 
-def add_student(request, classroom_id):
+def student_create(request, classroom_id):
 	classroom_obj = Classroom.objects.get(id=classroom_id)
 	form = StudentForm()
 	if request.method == "POST":
